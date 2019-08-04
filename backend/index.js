@@ -9,7 +9,7 @@ const app = express();
 app.use(express.static(PATH_TO_FRONTEND));
 
 app.get('/', (req, res) =>{
-    res.sendFile(path.join(PATH_TO_FRONTEND + '/build/index.html'));
+    res.sendFile(path.join(PATH_TO_FRONTEND + '/public/index.html'));
 });
 
 app.listen(PORT);
