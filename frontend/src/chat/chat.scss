@@ -2,21 +2,40 @@
 
 .sp--chat {
     display: flex;
-    height: 100%;
-    width: 100%;
+    margin: 20%;
+    border: solid 1px;
+    flex-direction: column;
+    align-items: center;
     &-feed {
         &-container {
-            align-items: center;
+            word-break: break-all;
+            width: 100%;
             justify-content: center;
             display: flex;
             flex-direction: column;
         }
         &-seperator {
-
+          padding: 5px;
         }
         &-message {
 
         }
     }
-
+    &-input {
+      &-bar {
+        border-top: solid 1px;
+        width: 100%;
+        display: flex;
+      }
+      &-message-box {
+        flex-grow: 6;
+      }
+      &-message-send-button {
+        border: none;
+        flex-grow: 1;
+        color: white;
+        background-color: #5485e0cf;
+        padding: 0;
+      }
+    }
 }

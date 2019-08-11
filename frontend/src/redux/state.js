@@ -1,3 +1,8 @@
 export default {
-    messages: ["test 1","test 2","test 3"]
+    messages: [
+      { text: "test 1", user: 'Matas'},
+      { text: "test 2", user: 'Matas'},
+      { text: "test 3", user: 'Matas'}
+    ],
+    user: 'Matas'
 };

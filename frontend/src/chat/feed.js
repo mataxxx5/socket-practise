@@ -5,9 +5,9 @@ import Message from './message';
 export default ({messages}) => {
     return (
         <div className='sp--chat-feed-container'>
-            {messages.map(message => (
+            {messages.map(({text, user}, i) => (
             <div className='sp--chat-feed-seperator'>
-                <Message text={message}/>
+                <Message text={text} user={user} key={i}/>
             </div>
             ))}
         </div>

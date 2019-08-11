@@ -2,24 +2,29 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux';
 import {addMessage} from '../redux/actions';
 
-const InputBar = ({sendMessage}) => {
-    let [userMessage, setUserMessage] = useState("");    
-    
+const InputBar = ({sendMessage, user}) => {
+    let [userMessage, setUserMessage] = useState("");
+
     const postMessage = () => {
-        sendMessage(userMessage);
+      if (userMessage !== "")
+        sendMessage({
+          user,
+          text: userMessage
+        });
+      setUserMessage("");
     }
     const textChange = (text) => {
-        console.log('text: ', text);
         setUserMessage(text);
     }
     return (
         <div className = 'sp--chat-input-bar'>
-            <input 
+            <input
                 className = 'sp--chat-input-message-box'
                 placeholder = 'Please type your message here...'
-                onInput = { e => textChange(e)}
+                value = {userMessage}
+                onInput = { e => textChange(e.target.value)}
             />
-            <button 
+            <button
                 className = 'sp--chat-input-message-send-button'
                 onClick = {postMessage}
             >
@@ -30,11 +35,11 @@ const InputBar = ({sendMessage}) => {
 };
 
 export default connect(
-    () => ({}),
+    state => ({
+      user: state.user
+    }),
     dispatch => ({
-        sendMessage: message => {
-            console.log('message: ', message);
-            dispatch(addMessage(message))
-        }
+        sendMessage: message =>
+          dispatch(addMessage(message))
     })
     )(InputBar);
